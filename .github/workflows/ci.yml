@@ -8,9 +8,9 @@ on:
 
 jobs:
   linux:
-    name: Linux (swift:6.2)
+    name: Linux (swift:6.4)
     runs-on: ubuntu-latest
-    container: swift:6.2
+    container: swift:6.4
     steps:
       - uses: actions/checkout@v4
       - run: swift test -j 2
