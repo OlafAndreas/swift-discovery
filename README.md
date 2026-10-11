@@ -1,4 +1,16 @@
-# SwiftDiscovery
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="Assets/wordmark-dark.svg">
+    <img src="Assets/wordmark.svg" alt="SwiftDiscovery" width="440">
+  </picture>
+</p>
+
+<p align="center">
+  <a href="https://github.com/OlafAndreas/swift-discovery/actions/workflows/ci.yml"><img src="https://github.com/OlafAndreas/swift-discovery/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-2F5F9E.svg" alt="MIT license"></a>
+  <img src="https://img.shields.io/badge/Swift-6.3%2B-1B8A8F.svg" alt="Swift 6.3+">
+  <img src="https://img.shields.io/badge/platforms-macOS%20%7C%20iOS%20%7C%20Linux-2F5F9E.svg" alt="macOS, iOS, Linux">
+</p>
 
 Find every type that opted in. No registration code, no reflection, no Objective-C runtime.
 
