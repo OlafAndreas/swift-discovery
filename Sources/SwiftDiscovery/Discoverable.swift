@@ -1,7 +1,4 @@
-#if canImport(Darwin)
-import MachO
-#endif
-import SwiftDiscoverySectionShim
+import SwiftSections
 
 /// Marks a nominal type for discovery under one or more keys.
 ///
@@ -65,35 +62,9 @@ public enum Discoverable {
     }
 
     static func forEachRecord(_ body: (DiscoveryRecord) -> Void) {
-        #if canImport(Darwin)
-        let (segment, section) = splitMachOName(DiscoverySectionName.machO)
-        for index in 0..<_dyld_image_count() {
-            guard let header = _dyld_get_image_header(index) else { continue }
-            var size: UInt = 0
-            let header64 = UnsafeRawPointer(header).assumingMemoryBound(to: mach_header_64.self)
-            guard let data = getsectiondata(header64, segment, section, &size), size > 0 else { continue }
-            let count = Int(size) / MemoryLayout<DiscoveryRecord>.stride
-            let records = UnsafeRawPointer(data).assumingMemoryBound(to: DiscoveryRecord.self)
-            for i in 0..<count { body(records[i]) }
+        for buffer in SectionContents.loaded(DiscoverySectionName.current) {
+            for record in buffer.bindMemory(to: DiscoveryRecord.self) { body(record) }
         }
-        #elseif os(Linux) || os(Android) || os(FreeBSD)
-        // ELF: the linker provides __start_/__stop_ bounds for the section in the image the
-        // shim is linked into (the executable, for statically linked SwiftPM products).
-        guard let start = swiftdiscovery_elf_section_start(),
-              let stop = swiftdiscovery_elf_section_stop(),
-              stop > start
-        else { return }
-        let count = (stop - start) / MemoryLayout<DiscoveryRecord>.stride
-        let records = start.assumingMemoryBound(to: DiscoveryRecord.self)
-        for i in 0..<count { body(records[i]) }
-        #else
-        // Windows PE is not supported yet.
-        #endif
-    }
-
-    private static func splitMachOName(_ name: String) -> (String, String) {
-        let parts = name.split(separator: ",", maxSplits: 1).map(String.init)
-        return (parts[0], parts[1])
     }
 }
 

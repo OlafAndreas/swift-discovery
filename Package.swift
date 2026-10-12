@@ -13,14 +13,16 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/swiftlang/swift-syntax.git", "600.0.0"..<"605.0.0"),
+        .package(url: "https://github.com/OlafAndreas/swift-sections.git", from: "0.1.0"),
     ],
     targets: [
         .target(
             name: "SwiftDiscovery",
-            dependencies: ["SwiftDiscoveryMacros", "SwiftDiscoverySectionShim"]
+            dependencies: [
+                "SwiftDiscoveryMacros",
+                .product(name: "SwiftSections", package: "swift-sections"),
+            ]
         ),
-        // C shim exposing the ELF section bounds on Linux. No-op elsewhere.
-        .target(name: "SwiftDiscoverySectionShim"),
         // Syntax builders shared by `@Discoverable` and third-party macros such as SwiftMediator's `@Handler`.
         .target(
             name: "SwiftDiscoveryMacroSupport",

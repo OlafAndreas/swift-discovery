@@ -72,8 +72,9 @@ is built this way.
   types and on types nested in generic types.
 - Discovery sees what is linked and loaded. A type in a static-archive member that nothing
   references is never linked, and its record goes with it.
-- On ELF the section bounds come from the linker's start and stop symbols of the image the
-  package is linked into. Images loaded later with `dlopen` are not seen.
+- Section reading is provided by [swift-sections](https://github.com/OlafAndreas/swift-sections).
+  Every loaded image is seen on Mach-O and ELF; Windows is not implemented. Images loaded
+  after the first scan show up in `Discoverable.rescan()`.
 
 ## License
 
