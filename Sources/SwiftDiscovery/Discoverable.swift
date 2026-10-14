@@ -1,5 +1,3 @@
-import SwiftSections
-
 /// Marks a nominal type for discovery under one or more keys.
 ///
 /// Expands to a constant record per key in a dedicated binary section. Nothing runs at load
@@ -62,7 +60,7 @@ public enum Discoverable {
     }
 
     static func forEachRecord(_ body: (DiscoveryRecord) -> Void) {
-        for buffer in SectionContents.loaded(DiscoverySectionName.current) {
+        for buffer in customSectionContents(named: DiscoverySectionName.current) {
             for record in buffer.bindMemory(to: DiscoveryRecord.self) { body(record) }
         }
     }

@@ -13,14 +13,12 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/swiftlang/swift-syntax.git", "600.0.0"..<"605.0.0"),
-        .package(url: "https://github.com/OlafAndreas/swift-sections.git", from: "0.1.0"),
     ],
     targets: [
         .target(
             name: "SwiftDiscovery",
             dependencies: [
                 "SwiftDiscoveryMacros",
-                .product(name: "SwiftSections", package: "swift-sections"),
             ]
         ),
         // Syntax builders shared by `@Discoverable` and third-party macros such as SwiftMediator's `@Handler`.
