@@ -63,7 +63,11 @@ return DiscoveryRecordSyntax.declarations(
 ```
 
 The expansion spells out the record type and erases metadata with `unsafeBitCast`, so the
-adopting module needs no import beyond the key's. [SwiftMediator](https://github.com/OlafAndreas/swift-mediator)
+adopting module needs no import beyond the key's.
+
+A runtime that only reads records can depend on the `SwiftDiscoveryCore` product instead of
+`SwiftDiscovery`. It is the same runtime API without the `@Discoverable` macro, so it builds
+without swift-syntax. [SwiftMediator](https://github.com/OlafAndreas/swift-mediator)
 is built this way.
 
 ## Limits

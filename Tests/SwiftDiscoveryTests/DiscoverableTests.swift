@@ -51,7 +51,7 @@ import SwiftDiscovery
     @Test func scopes() {
         #expect(DiscoveryScope.moduleName(of: SpellChecker.self) == "SwiftDiscoveryTests")
         #expect(DiscoveryScope.moduleName(of: Outer.Deeper.TwiceNested.self) == "SwiftDiscoveryTests")
-        #expect(DiscoveryScope.moduleName(of: Discoverable.self) == "SwiftDiscovery")
+        #expect(DiscoveryScope.moduleName(of: Discoverable.self) == "SwiftDiscoveryCore")
 
         #expect(Discoverable.types(for: Plugins.self, in: .none).isEmpty)
         #expect(Discoverable.types(for: Plugins.self, in: .modules(["Nope"])).isEmpty)

@@ -8,6 +8,8 @@ let package = Package(
     products: [
         /// Runtime API and the `@Discoverable(Key.self)` macro.
         .library(name: "SwiftDiscovery", targets: ["SwiftDiscovery"]),
+        /// Runtime API only. Builds without swift-syntax; records come from other modules' macros.
+        .library(name: "SwiftDiscoveryCore", targets: ["SwiftDiscoveryCore"]),
         /// SwiftSyntax helpers for framework macros that want to emit discovery records.
         .library(name: "SwiftDiscoveryMacroSupport", targets: ["SwiftDiscoveryMacroSupport"]),
     ],
@@ -17,10 +19,16 @@ let package = Package(
     ],
     targets: [
         .target(
+            name: "SwiftDiscoveryCore",
+            dependencies: [
+                .product(name: "SwiftSections", package: "swift-sections"),
+            ]
+        ),
+        .target(
             name: "SwiftDiscovery",
             dependencies: [
+                "SwiftDiscoveryCore",
                 "SwiftDiscoveryMacros",
-                .product(name: "SwiftSections", package: "swift-sections"),
             ]
         ),
         // Syntax builders shared by `@Discoverable` and third-party macros such as SwiftMediator's `@Handler`.
