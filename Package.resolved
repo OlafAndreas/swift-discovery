@@ -1,13 +1,13 @@
 {
-  "originHash" : "ff9d986b48732301c04a40d59f2e4a134aaefc967841dc5c4025d989c0448a68",
+  "originHash" : "f260a93081b55ffda604909c81d551cbcaaf61965b9894380f70e3d5b5dc5cfe",
   "pins" : [
     {
       "identity" : "swift-sections",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/OlafAndreas/swift-sections.git",
       "state" : {
-        "revision" : "29c0bdf1cd2b69660f458873bf75585af9c75e69",
-        "version" : "0.1.0"
+        "revision" : "ac41935aeed32fd60b78774227f8403265502b01",
+        "version" : "0.2.0"
       }
     },
     {
