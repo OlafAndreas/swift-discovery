@@ -34,7 +34,7 @@ images once and caches the result. Nothing runs at load time.
 ## Install
 
 ```swift
-.package(url: "https://github.com/OlafAndreas/swift-discovery.git", from: "0.3.1")
+.package(url: "https://github.com/OlafAndreas/swift-discovery.git", from: "0.3.2")
 ```
 
 Requires Swift 6.3 or later (the `@section` and `@used` attributes from SE-0492; Swift 6.2 does not have them). Supported on Apple
