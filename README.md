@@ -44,7 +44,7 @@ platforms and ELF platforms (Linux, Android, FreeBSD). Windows is not implemente
 
 - `DiscoveryKey`: a marker protocol. Keys are usually caseless enums owned by the framework that enumerates them.
 - `@Discoverable(Key.self, ...)`: marks a struct, class, actor or enum under one or more keys. Apply it once per type.
-- `Discoverable.types(for:)`: every loaded type under a key, sorted by qualified name, without duplicates.
+- `Discoverable.types(for:)`: every loaded type under a key, without duplicates, in a stable order (by mangled name, not alphabetical).
 - `Discoverable.types(for:in:)`: the same, restricted to a `DiscoveryScope` such as `.thisModule()` or `.modules([...])`.
 - `Discoverable.rescan()`: re-walks the images, for code that loads plugins after first use.
 

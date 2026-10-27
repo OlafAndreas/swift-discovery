@@ -31,11 +31,11 @@ import SwiftDiscovery
         #expect(Discoverable.types(for: Unused.self).isEmpty)
     }
 
-    @Test func orderIsStableAndSortedByQualifiedName() {
-        let a = names(Discoverable.types(for: Plugins.self, in: .thisModule()))
-        let b = names(Discoverable.types(for: Plugins.self, in: .thisModule()))
-        #expect(a == b)
-        #expect(a == a.sorted())
+    @Test func orderIsStableAndSortedByMangledName() {
+        let types = Discoverable.types(for: Plugins.self, in: .thisModule())
+        #expect(names(types) == names(Discoverable.types(for: Plugins.self, in: .thisModule())))
+        let mangled = types.map { _mangledTypeName($0) ?? "" }
+        #expect(mangled == mangled.sorted())
     }
 
     @Test func noDuplicates() {

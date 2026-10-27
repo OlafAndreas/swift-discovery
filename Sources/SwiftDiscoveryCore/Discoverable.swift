@@ -2,8 +2,9 @@ import SwiftSections
 
 /// Enumerates types marked `@Discoverable`, or recorded by a framework macro.
 public enum Discoverable {
-    /// Every loaded type recorded under `key`, in a stable order (sorted by qualified name)
-    /// with duplicates removed.
+    /// Every loaded type recorded under `key`, in a stable order (sorted by mangled name)
+    /// with duplicates removed. The order is the same on every launch of the same binary, and
+    /// is not alphabetical: sort by your own key where order matters.
     public static func types(for key: any DiscoveryKey.Type) -> [Any.Type] {
         cached[ObjectIdentifier(key)] ?? []
     }
@@ -28,7 +29,9 @@ public enum Discoverable {
             byKey[ObjectIdentifier(key), default: []].append(type)
         }
         for (key, types) in byKey {
-            byKey[key] = types.sorted { String(reflecting: $0) < String(reflecting: $1) }
+            // Mangled names are read from the type's descriptor; a qualified name is built by
+            // demangling, which costs tens of microseconds per type the first time.
+            byKey[key] = types.map { (_mangledTypeName($0) ?? "", $0) }.sorted { $0.0 < $1.0 }.map(\.1)
         }
         return byKey
     }
