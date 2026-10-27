@@ -21,10 +21,15 @@ public typealias DiscoveryRecord = (
 public enum DiscoverySectionName {
     public static let machO = "__DATA_CONST,__swift5_discov"
     public static let elf = "swift5_discov"
+    /// Records go in the `$B` group of the image section `.discov`; PE limits image section
+    /// names to 8 bytes.
+    public static let windows = ".discov$B"
 
     /// The name for the current object format, as read by `SectionContents`.
     #if canImport(Darwin)
     public static let current = SectionName("__DATA_CONST,__swift5_discov")
+    #elseif os(Windows)
+    public static let current = SectionName(".discov$B")
     #else
     public static let current = SectionName("swift5_discov")
     #endif

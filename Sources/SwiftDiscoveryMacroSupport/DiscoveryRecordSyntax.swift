@@ -114,6 +114,9 @@ public enum DiscoveryRecordSyntax {
             #elseif os(Linux) || os(Android) || os(FreeBSD)
             @section("swift5_discov") @used
             \(raw: placement.storage) \(raw: record)
+            #elseif os(Windows)
+            @section(".discov$B") @used
+            \(raw: placement.storage) \(raw: record)
             #endif
             """
         ]

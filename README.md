@@ -38,7 +38,7 @@ images once and caches the result. Nothing runs at load time.
 ```
 
 Requires Swift 6.3 or later (the `@section` and `@used` attributes from SE-0492; Swift 6.2 does not have them). Supported on Apple
-platforms and ELF platforms (Linux, Android, FreeBSD). Windows is not implemented yet.
+platforms, ELF platforms (Linux, Android, FreeBSD) and Windows.
 
 ## API
 
@@ -78,8 +78,8 @@ is built this way.
   references is never linked, and its record goes with it.
 - Section reading is provided by [swift-sections](https://github.com/OlafAndreas/swift-sections),
   a prototype of the runtime API [pitched on the Swift Forums](https://forums.swift.org/t/pitch-runtime-enumeration-of-custom-sections/90011).
-  Every loaded image is seen on Mach-O and ELF; Windows is not implemented. Images loaded
-  after the first scan show up in `Discoverable.rescan()`.
+  Every loaded image is seen on Mach-O, ELF and Windows. Images loaded after the first scan
+  show up in `Discoverable.rescan()`.
 
 ## License
 
