@@ -24,3 +24,14 @@ jobs:
         with:
           xcode-version: latest-stable
       - run: swift test
+
+  windows:
+    name: Windows (Swift 6.3.2)
+    runs-on: windows-2025
+    steps:
+      - uses: compnerd/gha-setup-swift@main
+        with:
+          swift-version: swift-6.3.2-release
+          swift-build: 6.3.2-RELEASE
+      - uses: actions/checkout@v4
+      - run: swift test

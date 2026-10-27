@@ -41,6 +41,18 @@ final class DiscoverableMacroTests: XCTestCase {
                     unsafe unsafeBitCast(Plugins.self as Any.Type, to: UnsafeRawPointer.self)
                 }
             )
+            #elseif os(Windows)
+            @section(".discov$B") @used
+            private let __discovery_record_SpellChecker: \(Self.recordType) = (
+                version: 1,
+                flags: 0,
+                type: {
+                    unsafe unsafeBitCast(SpellChecker.self as Any.Type, to: UnsafeRawPointer.self)
+                },
+                key: {
+                    unsafe unsafeBitCast(Plugins.self as Any.Type, to: UnsafeRawPointer.self)
+                }
+            )
             #endif
             """,
             macros: macros
@@ -104,6 +116,30 @@ final class DiscoverableMacroTests: XCTestCase {
                     }
                 )
             )
+            #elseif os(Windows)
+            @section(".discov$B") @used
+            private let __discovery_record_E: (\(Self.recordType), \(Self.recordType)) = (
+                (
+                    version: 1,
+                    flags: 0,
+                    type: {
+                        unsafe unsafeBitCast(E.self as Any.Type, to: UnsafeRawPointer.self)
+                    },
+                    key: {
+                        unsafe unsafeBitCast(Plugins.self as Any.Type, to: UnsafeRawPointer.self)
+                    }
+                ),
+                (
+                    version: 1,
+                    flags: 0,
+                    type: {
+                        unsafe unsafeBitCast(E.self as Any.Type, to: UnsafeRawPointer.self)
+                    },
+                    key: {
+                        unsafe unsafeBitCast(Web.Routes.self as Any.Type, to: UnsafeRawPointer.self)
+                    }
+                )
+            )
             #endif
             """,
             macros: macros
@@ -136,6 +172,18 @@ final class DiscoverableMacroTests: XCTestCase {
                 )
                 #elseif os(Linux) || os(Android) || os(FreeBSD)
                 @section("swift5_discov") @used
+                private static let __discovery_record_Inner: \(Self.recordType) = (
+                    version: 1,
+                    flags: 0,
+                    type: {
+                        unsafe unsafeBitCast(Inner.self as Any.Type, to: UnsafeRawPointer.self)
+                    },
+                    key: {
+                        unsafe unsafeBitCast(Plugins.self as Any.Type, to: UnsafeRawPointer.self)
+                    }
+                )
+                #elseif os(Windows)
+                @section(".discov$B") @used
                 private static let __discovery_record_Inner: \(Self.recordType) = (
                     version: 1,
                     flags: 0,
