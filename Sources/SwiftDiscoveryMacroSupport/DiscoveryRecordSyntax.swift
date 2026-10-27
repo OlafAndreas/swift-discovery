@@ -86,8 +86,8 @@ public enum DiscoveryRecordSyntax {
             """
             \(indent)version: 1,
             \(indent)flags: 0,
-            \(indent)type: { unsafeBitCast(\(placement.typeName).self as Any.Type, to: UnsafeRawPointer.self) },
-            \(indent)key: { unsafeBitCast(\(key).self as Any.Type, to: UnsafeRawPointer.self) }
+            \(indent)type: { unsafe unsafeBitCast(\(placement.typeName).self as Any.Type, to: UnsafeRawPointer.self) },
+            \(indent)key: { unsafe unsafeBitCast(\(key).self as Any.Type, to: UnsafeRawPointer.self) }
             """
         }
         let record: String

@@ -23,10 +23,10 @@ final class DiscoverableMacroTests: XCTestCase {
                 version: 1,
                 flags: 0,
                 type: {
-                    unsafeBitCast(SpellChecker.self as Any.Type, to: UnsafeRawPointer.self)
+                    unsafe unsafeBitCast(SpellChecker.self as Any.Type, to: UnsafeRawPointer.self)
                 },
                 key: {
-                    unsafeBitCast(Plugins.self as Any.Type, to: UnsafeRawPointer.self)
+                    unsafe unsafeBitCast(Plugins.self as Any.Type, to: UnsafeRawPointer.self)
                 }
             )
             #elseif os(Linux) || os(Android) || os(FreeBSD)
@@ -35,10 +35,10 @@ final class DiscoverableMacroTests: XCTestCase {
                 version: 1,
                 flags: 0,
                 type: {
-                    unsafeBitCast(SpellChecker.self as Any.Type, to: UnsafeRawPointer.self)
+                    unsafe unsafeBitCast(SpellChecker.self as Any.Type, to: UnsafeRawPointer.self)
                 },
                 key: {
-                    unsafeBitCast(Plugins.self as Any.Type, to: UnsafeRawPointer.self)
+                    unsafe unsafeBitCast(Plugins.self as Any.Type, to: UnsafeRawPointer.self)
                 }
             )
             #endif
@@ -63,20 +63,20 @@ final class DiscoverableMacroTests: XCTestCase {
                     version: 1,
                     flags: 0,
                     type: {
-                        unsafeBitCast(E.self as Any.Type, to: UnsafeRawPointer.self)
+                        unsafe unsafeBitCast(E.self as Any.Type, to: UnsafeRawPointer.self)
                     },
                     key: {
-                        unsafeBitCast(Plugins.self as Any.Type, to: UnsafeRawPointer.self)
+                        unsafe unsafeBitCast(Plugins.self as Any.Type, to: UnsafeRawPointer.self)
                     }
                 ),
                 (
                     version: 1,
                     flags: 0,
                     type: {
-                        unsafeBitCast(E.self as Any.Type, to: UnsafeRawPointer.self)
+                        unsafe unsafeBitCast(E.self as Any.Type, to: UnsafeRawPointer.self)
                     },
                     key: {
-                        unsafeBitCast(Web.Routes.self as Any.Type, to: UnsafeRawPointer.self)
+                        unsafe unsafeBitCast(Web.Routes.self as Any.Type, to: UnsafeRawPointer.self)
                     }
                 )
             )
@@ -87,20 +87,20 @@ final class DiscoverableMacroTests: XCTestCase {
                     version: 1,
                     flags: 0,
                     type: {
-                        unsafeBitCast(E.self as Any.Type, to: UnsafeRawPointer.self)
+                        unsafe unsafeBitCast(E.self as Any.Type, to: UnsafeRawPointer.self)
                     },
                     key: {
-                        unsafeBitCast(Plugins.self as Any.Type, to: UnsafeRawPointer.self)
+                        unsafe unsafeBitCast(Plugins.self as Any.Type, to: UnsafeRawPointer.self)
                     }
                 ),
                 (
                     version: 1,
                     flags: 0,
                     type: {
-                        unsafeBitCast(E.self as Any.Type, to: UnsafeRawPointer.self)
+                        unsafe unsafeBitCast(E.self as Any.Type, to: UnsafeRawPointer.self)
                     },
                     key: {
-                        unsafeBitCast(Web.Routes.self as Any.Type, to: UnsafeRawPointer.self)
+                        unsafe unsafeBitCast(Web.Routes.self as Any.Type, to: UnsafeRawPointer.self)
                     }
                 )
             )
@@ -128,10 +128,10 @@ final class DiscoverableMacroTests: XCTestCase {
                     version: 1,
                     flags: 0,
                     type: {
-                        unsafeBitCast(Inner.self as Any.Type, to: UnsafeRawPointer.self)
+                        unsafe unsafeBitCast(Inner.self as Any.Type, to: UnsafeRawPointer.self)
                     },
                     key: {
-                        unsafeBitCast(Plugins.self as Any.Type, to: UnsafeRawPointer.self)
+                        unsafe unsafeBitCast(Plugins.self as Any.Type, to: UnsafeRawPointer.self)
                     }
                 )
                 #elseif os(Linux) || os(Android) || os(FreeBSD)
@@ -140,10 +140,10 @@ final class DiscoverableMacroTests: XCTestCase {
                     version: 1,
                     flags: 0,
                     type: {
-                        unsafeBitCast(Inner.self as Any.Type, to: UnsafeRawPointer.self)
+                        unsafe unsafeBitCast(Inner.self as Any.Type, to: UnsafeRawPointer.self)
                     },
                     key: {
-                        unsafeBitCast(Plugins.self as Any.Type, to: UnsafeRawPointer.self)
+                        unsafe unsafeBitCast(Plugins.self as Any.Type, to: UnsafeRawPointer.self)
                     }
                 )
                 #endif

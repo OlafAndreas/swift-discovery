@@ -48,7 +48,11 @@ let package = Package(
                 .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
             ]
         ),
-        .testTarget(name: "SwiftDiscoveryTests", dependencies: ["SwiftDiscovery"]),
+        .testTarget(
+            name: "SwiftDiscoveryTests",
+            dependencies: ["SwiftDiscovery"],
+            swiftSettings: [.unsafeFlags(["-strict-memory-safety", "-warnings-as-errors"])]
+        ),
         .testTarget(
             name: "SwiftDiscoveryMacrosTests",
             dependencies: [
