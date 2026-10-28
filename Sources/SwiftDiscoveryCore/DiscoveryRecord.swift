@@ -1,5 +1,9 @@
 import SwiftSections
 
+#if !compiler(>=6.3)
+#error("swift-discovery requires Swift 6.3 or later: its records use @section and @used (SE-0492).")
+#endif
+
 /// Layout of one entry in the discovery section. Written by ``Discoverable(_:)`` (or a
 /// framework macro built on `SwiftDiscoveryMacroSupport`), read by ``Discoverable``.
 ///

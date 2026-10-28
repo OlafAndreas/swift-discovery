@@ -35,3 +35,14 @@ jobs:
           swift-build: 6.3.2-RELEASE
       - uses: actions/checkout@v4
       - run: swift test
+
+  manifest:
+    name: Resolves with Swift ${{ matrix.swift }}
+    runs-on: ubuntu-latest
+    container: swift:${{ matrix.swift }}
+    strategy:
+      matrix:
+        swift: ["5.9", "5.10", "6.0"]
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift package describe

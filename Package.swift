@@ -1,4 +1,4 @@
-// swift-tools-version: 6.1
+// swift-tools-version: 5.9
 import PackageDescription
 import CompilerPluginSupport
 
@@ -15,7 +15,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/swiftlang/swift-syntax.git", "600.0.0"..<"606.0.0-latest"),
-        .package(url: "https://github.com/OlafAndreas/swift-sections.git", from: "0.2.0"),
+        .package(url: "https://github.com/OlafAndreas/swift-sections.git", from: "0.2.1"),
     ],
     targets: [
         .target(
@@ -62,3 +62,9 @@ let package = Package(
         ),
     ]
 )
+
+// Swift 6 language mode. Set here rather than in the initializer so that SwiftPM versions
+// before 6.0, which reject language version 6, can still read the manifest.
+#if compiler(>=6)
+package.swiftLanguageVersions = [.version("6")]
+#endif
